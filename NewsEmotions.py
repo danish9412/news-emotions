@@ -16,11 +16,13 @@ def google_news_grabber(stockName):
     page = response.content
     #print("page: ",page);
     soup = BeautifulSoup(page, 'html.parser')
-    print("soup: ",soup.find_all('description'))
-    textContent = []
-    for i in soup.find_all('description'):
-        paragraphs = soup.find_all('p')[i].text
-        textContent.append(paragraphs)
+    filtered = soup.find_all('title')
+    #print("filtered: ",filtered[3].text)
+    newsArray = []
+    for news in filtered:
+        #print("filtered: ",news.text)
+        paragraphs = news.text
+        newsArray.append(paragraphs)
     
-  
+    print("newsArray: ",newsArray[2])
 google_news_grabber('NFLX')   
