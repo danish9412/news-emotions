@@ -6,35 +6,25 @@ Created on Mon Feb 25 16:55:00 2019
 @author: danishsiddiqui
 """
 
-from http.server import BaseHTTPRequestHandler, HTTPServer
-import NewsEmotions
+from flask import Flask
+from flask import request
+from flask import jsonify
+#import NewsEmotions
  
+app = Flask(__name__)
 # HTTPRequestHandler class
-class httpServer_RequestHandler(BaseHTTPRequestHandler):
+class httpServer():
  
-  # GET
-  def do_GET(self):
-        # Send response status code
-        self.send_response(200)
+    @app.route('/', methods=['GET','POST'])
+    def parse_request():
+        #data = request.data  # data is empty
+        news = request.form.get('news')
+        print("news",news)
+        resp = jsonify(success=True)
+        return resp
+    
+    if __name__ == "__main__":
+        app.debug = True
+        app.run(host = '127.0.0.1',port=8081)
  
-        # Send headers
-        self.send_header('Content-type','text/html')
-        self.end_headers()
- 
-        # Send message back to client
-        message = "Hello world!"
-        # Write content as utf-8 data
-        self.wfile.write(bytes(message, "utf8"))
-        return
- 
-def run():
- 
-  # Server settings
-  # Choose port 8080, for port 80, which is normally used for a http server, you need root access
-  server_address = ('127.0.0.1', 8081)
-  httpd = HTTPServer(server_address, httpServer_RequestHandler)
-  print('running server...')
-  httpd.serve_forever()
- 
-NewsEmotions.tone_analyzer("Its an amazing day") 
-#run()
+#NewsEmotions.tone_analyzer("Its an amazing day") 
