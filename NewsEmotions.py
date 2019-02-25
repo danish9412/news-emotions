@@ -46,9 +46,4 @@ def google_news_grabber(stockName):
     
     print("newsArray: ",newsArray[2])
 #google_news_grabber('NFLX')  
-
-text = 'Team, I know that times are tough! Product '\
-        'sales have been disappointing for the past three '\
-        'quarters. We have a competitive product, but we '\
-        'need to do a better job of selling it!'
-tone_analyzer(text)
+#tone_analyzer(text)
