@@ -9,7 +9,7 @@ import requests
 from bs4 import BeautifulSoup
 from watson_developer_cloud import ToneAnalyzerV3
 import configparser
-import json
+#import json
 
 config = configparser.ConfigParser()
 config.read("/Users/danishsiddiqui/Projects/StockNews/config.ini")
@@ -26,7 +26,13 @@ def tone_analyzer(text):
         {'text': text},
         'application/json'
     ).get_result()
-    print(json.dumps(tone_analysis, indent=4, sort_keys=True))
+    if not tone_analysis.get('document_tone').get('tones'):
+        return None
+    
+    if("score" in tone_analysis):
+        return tone_analysis
+    #print(json.dumps(tone_analysis, indent=4, sort_keys=True))
+    #return tone_analysis
 
 def google_news_grabber(stockName):
     #stockNameEncoded = urllib.parse.quote_plus(stockName)
@@ -43,7 +49,9 @@ def google_news_grabber(stockName):
         #print("filtered: ",news.text)
         paragraphs = news.text
         newsArray.append(paragraphs)
-    
-    print("newsArray: ",newsArray[2])
+
+    #print("newsArray: ",newsArray[2])
+    return newsArray
+
 #google_news_grabber('NFLX')  
-#tone_analyzer(text)
+print(tone_analyzer("dskfc"))

@@ -9,7 +9,7 @@ Created on Mon Feb 25 16:55:00 2019
 from flask import Flask
 from flask import request
 from flask import jsonify
-#import NewsEmotions
+import NewsEmotions
  
 app = Flask(__name__)
 # HTTPRequestHandler class
@@ -18,9 +18,16 @@ class httpServer():
     @app.route('/', methods=['GET','POST'])
     def parse_request():
         #data = request.data  # data is empty
-        news = request.form.get('news')
-        print("news",news)
-        resp = jsonify(success=True)
+        stockName = request.form.get('stockName')
+        print("stockName",stockName)
+        newsArray = []
+        newsArray = NewsEmotions.google_news_grabber(stockName)
+        
+        respArray = []
+        for news in newsArray:
+            respArray.append(NewsEmotions.tone_analyzer(news))
+            
+        resp = jsonify(respArray)
         return resp
     
     if __name__ == "__main__":
