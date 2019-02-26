@@ -25,7 +25,10 @@ class httpServer():
         
         respArray = []
         for news in newsArray:
-            respArray.append(NewsEmotions.tone_analyzer(news))
+            singleTitle = news.replace(".", "")
+            toneJSON = NewsEmotions.tone_analyzer(singleTitle)
+            if(toneJSON != None):
+                respArray.append(toneJSON)
             
         resp = jsonify(respArray)
         return resp

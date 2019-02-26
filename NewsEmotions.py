@@ -28,8 +28,7 @@ def tone_analyzer(text):
     ).get_result()
     if not tone_analysis.get('document_tone').get('tones'):
         return None
-    
-    if("score" in tone_analysis):
+    else:
         return tone_analysis
     #print(json.dumps(tone_analysis, indent=4, sort_keys=True))
     #return tone_analysis
@@ -54,4 +53,4 @@ def google_news_grabber(stockName):
     return newsArray
 
 #google_news_grabber('NFLX')  
-print(tone_analyzer("dskfc"))
+#print(tone_analyzer("dskfc"))
