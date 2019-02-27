@@ -1,8 +1,4 @@
-Flask==0.10.1
-Jinja2==2.6
-Werkzeug==0.10.4
-certifi==0.0.8
-chardet==1.0.1
-distribute==0.7.3
-gunicorn==0.14.2
-requests==0.11.1
+requests==2.21.0
+watson_developer_cloud==2.8.0
+Flask==1.0.2
+beautifulsoup4==4.7.1

@@ -13,4 +13,4 @@ But It can be used as a standalone application as well
 key = **Your API key**
 
 - Run server.py
-- Make POST call to http://127.0.0.1:8081 with "stockName" parameters in body (Stick to NASDAQ naming convention for precise results) 
+- Make a POST call to http://127.0.0.1:8081 with "stockName" parameter in body (Stick to NASDAQ naming convention for precise results) 
