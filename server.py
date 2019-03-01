@@ -19,7 +19,7 @@ class httpServer():
     def parse_request():
         #data = request.data  # data is empty
         stockName = request.form.get('stockName')
-        print("stockName",stockName)
+        #print("stockName",stockName)
         newsArray = []
         newsArray = NewsEmotions.google_news_grabber(stockName)
         
@@ -35,6 +35,5 @@ class httpServer():
     
     if __name__ == "__main__":
         app.debug = True
-        app.run(host = '127.0.0.1',port=8081)
- 
+        app.run(host = '0.0.0.0',port=5000)
 #NewsEmotions.tone_analyzer("Its an amazing day") 
