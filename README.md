@@ -6,6 +6,10 @@ But It can be used as a standalone application as well
 - NewsEmotions.py has google news fetcher and Watson tone anlyzer
 - server.py has flask server for REST calls
 
+## Pulling Docker Image
+- Make sure you have docker installed on your system
+- Execute the following command: docker pull danish9412/stock-news:final
+
 ## Starting application
 - Create a config.ini file in the root folder for API key. As mentioned below:
 
